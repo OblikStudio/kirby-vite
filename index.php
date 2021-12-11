@@ -7,6 +7,9 @@ load([
 	'Oblik\\KirbyVite\\Vite' => 'Vite.php'
 ], __DIR__);
 
+/**
+ * Returns the Vite singleton class instance.
+ */
 function vite()
 {
 	return Vite::instance();
