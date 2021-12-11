@@ -13,6 +13,14 @@ The plugin depends on Vite's [manifest functionality](https://vitejs.dev/config/
 
 ## How to use
 
+### Install
+
+You can find [`oblik/kirby-vite` on packagist](https://packagist.org/packages/oblik/kirby-vite):
+
+```
+composer require oblik/kirby-vite
+```
+
 ### Enable manifest
 
 Make sure you've enabled the [`build.manifest`](https://vitejs.dev/config/#build-manifest) option in your `vite.config.js`:
