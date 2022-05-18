@@ -2,7 +2,6 @@
 
 namespace Oblik\KirbyVite;
 
-use Kirby\Http\Server;
 use Kirby\Http\Uri;
 
 class Vite
@@ -44,7 +43,7 @@ class Vite
 	{
 		$uri = new Uri([
 			'scheme' => option('oblik.vite.server.https') ? 'https' : 'http',
-			'host'   => Server::host(),
+			'host'   => option('oblik.vite.server.host'),
 			'port'   => option('oblik.vite.server.port'),
 			'path'   => $path
 		]);
