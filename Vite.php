@@ -18,11 +18,11 @@ class Vite
 
 	public function __construct()
 	{
-		$path = implode(DIRECTORY_SEPARATOR, [
+		$path = implode(DIRECTORY_SEPARATOR, array_filter([
 			kirby()->root(),
 			option('oblik.vite.build.outDir'),
 			'manifest.json'
-		]);
+		], 'strlen'));
 
 		try {
 			$this->manifest = json_decode(file_get_contents($path), true);
@@ -33,11 +33,11 @@ class Vite
 
 	public function prodUrl(string $path)
 	{
-		return implode('/', [
+		return implode('/', array_filter([
 			site()->url(),
 			option('oblik.vite.build.outDir'),
 			$path
-		]);
+		], 'strlen'));
 	}
 
 	public function devUrl(string $path)
