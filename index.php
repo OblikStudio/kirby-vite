@@ -1,6 +1,7 @@
 <?php
 
 use Kirby\Cms\App;
+use Kirby\Http\Server;
 use Oblik\KirbyVite\Vite;
 
 load([
@@ -18,6 +19,7 @@ function vite()
 App::plugin('oblik/vite', [
 	'options' => [
 		'server' => [
+			'host' => Server::host(),
 			'port' => 3000,
 			'https' => false,
 		],

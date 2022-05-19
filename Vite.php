@@ -2,7 +2,6 @@
 
 namespace Oblik\KirbyVite;
 
-use Kirby\Http\Server;
 use Kirby\Http\Uri;
 
 class Vite
@@ -18,11 +17,11 @@ class Vite
 
 	public function __construct()
 	{
-		$path = implode(DIRECTORY_SEPARATOR, [
+		$path = implode(DIRECTORY_SEPARATOR, array_filter([
 			kirby()->root(),
 			option('oblik.vite.build.outDir'),
 			'manifest.json'
-		]);
+		], 'strlen'));
 
 		try {
 			$this->manifest = json_decode(file_get_contents($path), true);
@@ -33,18 +32,18 @@ class Vite
 
 	public function prodUrl(string $path)
 	{
-		return implode('/', [
+		return implode('/', array_filter([
 			site()->url(),
 			option('oblik.vite.build.outDir'),
 			$path
-		]);
+		], 'strlen'));
 	}
 
 	public function devUrl(string $path)
 	{
 		$uri = new Uri([
 			'scheme' => option('oblik.vite.server.https') ? 'https' : 'http',
-			'host'   => Server::host(),
+			'host'   => option('oblik.vite.server.host'),
 			'port'   => option('oblik.vite.server.port'),
 			'path'   => $path
 		]);
