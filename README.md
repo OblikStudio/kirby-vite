@@ -27,12 +27,12 @@ composer require oblik/kirby-vite
 
 #### Download
 
-Download and copy this repository to `/site/plugins/kirby-blurry-placeholder`.
+Download and copy this repository to `/site/plugins/vite`.
 
 #### Git Submodule
 
 ```bash
-git submodule add https://github.com/johannschopplich/kirby-blurry-placeholder.git site/plugins/kirby-blurry-placeholder
+git submodule add https://github.com/oblik/kirby-vite.git site/plugins/vite
 ```
 
 ### Enable Manifest
