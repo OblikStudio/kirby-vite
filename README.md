@@ -40,12 +40,15 @@ git submodule add https://github.com/oblik/kirby-vite.git site/plugins/vite
 Make sure you've enabled the [`build.manifest`](https://vitejs.dev/config/build-options.html#build-manifest) option in your `vite.config.js`:
 
 ```js
-export default {
+// vite.config.js
+export default defineConfig({
 	build: {
 		manifest: true,
 	},
-};
+});
 ```
+
+> ℹ️ You may want to take a deep dive into [Vite's backend integration guide](https://vitejs.dev/guide/backend-integration.html) to get an idea how Vite will handle assets.
 
 ### Output JavaScript
 
