@@ -38,7 +38,7 @@ class Vite
 	public function prodUrl(string $path): string
 	{
 		return implode('/', array_filter([
-			site()->url(),
+			kirby()->url(),
 			option('oblik.vite.build.outDir'),
 			$path
 		], 'strlen'));
