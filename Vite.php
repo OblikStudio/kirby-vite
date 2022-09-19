@@ -30,7 +30,12 @@ class Vite
 		}
 	}
 
-	public function prodUrl(string $path)
+	public function isDev(): bool
+	{
+		return !is_array($this->manifest);
+	}
+
+	public function prodUrl(string $path): string
 	{
 		return implode('/', array_filter([
 			site()->url(),
@@ -39,7 +44,7 @@ class Vite
 		], 'strlen'));
 	}
 
-	public function devUrl(string $path)
+	public function devUrl(string $path): string
 	{
 		$uri = new Uri([
 			'scheme' => option('oblik.vite.server.https') ? 'https' : 'http',
@@ -55,7 +60,7 @@ class Vite
 	 * Output a `<script>` tag for an entry point.
 	 * @param string $entry e.g. `src/index.js`.
 	 */
-	public function js(string $entry)
+	public function js(string $entry): string
 	{
 		if (is_array($this->manifest)) {
 			$url = $this->prodUrl($this->manifest[$entry]['file']);
@@ -67,10 +72,10 @@ class Vite
 	}
 
 	/**
-	 * Output `<link>` tags for each CSS file of an entry point.
+	 * Outputs `<link>` tags for each CSS file of an entry point.
 	 * @param string $entry The JavaScript entry point that includes your CSS.
 	 */
-	public function css(string $entry)
+	public function css(string $entry): string
 	{
 		if (is_array($this->manifest)) {
 			foreach ($this->manifest[$entry]['css'] as $file) {
