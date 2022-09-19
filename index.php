@@ -1,7 +1,7 @@
 <?php
 
 use Kirby\Cms\App;
-use Kirby\Http\Server;
+use Kirby\Http\Environment;
 use Oblik\KirbyVite\Vite;
 
 load([
@@ -11,16 +11,18 @@ load([
 /**
  * Returns the Vite singleton class instance.
  */
-function vite()
-{
-	return Vite::instance();
+if (!function_exists('vite')) {
+	function vite(): Vite
+	{
+		return Vite::instance();
+	}
 }
 
 App::plugin('oblik/vite', [
 	'options' => [
 		'server' => [
-			'host' => Server::host(),
-			'port' => 3000,
+			'host' => (new Environment())->host(),
+			'port' => 5173,
 			'https' => false,
 		],
 		'build' => [
