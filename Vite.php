@@ -75,7 +75,7 @@ class Vite
 	 * Outputs `<link>` tags for each CSS file of an entry point.
 	 * @param string $entry The JavaScript entry point that includes your CSS.
 	 */
-	public function css(string $entry): string
+	public function css(string $entry)
 	{
 		if (is_array($this->manifest)) {
 			foreach ($this->manifest[$entry]['css'] as $file) {
