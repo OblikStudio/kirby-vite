@@ -32,7 +32,7 @@ class Vite
 
 	public function isDev(): bool
 	{
-		return !is_array($this->manifest);
+		return $this->manifest === null;
 	}
 
 	public function prodUrl(string $path): string
