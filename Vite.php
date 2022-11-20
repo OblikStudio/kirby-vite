@@ -10,7 +10,7 @@ class Vite
 
 	public static function instance()
 	{
-		return static::$instance ?? (static::$instance = new static());
+		return static::$instance ??= new static();
 	}
 
 	public $manifest;
@@ -30,16 +30,21 @@ class Vite
 		}
 	}
 
-	public function prodUrl(string $path)
+	public function isDev(): bool
+	{
+		return $this->manifest === null;
+	}
+
+	public function prodUrl(string $path): string
 	{
 		return implode('/', array_filter([
-			site()->url(),
+			kirby()->url(),
 			option('oblik.vite.build.outDir'),
 			$path
 		], 'strlen'));
 	}
 
-	public function devUrl(string $path)
+	public function devUrl(string $path): string
 	{
 		$uri = new Uri([
 			'scheme' => option('oblik.vite.server.https') ? 'https' : 'http',
@@ -55,7 +60,7 @@ class Vite
 	 * Output a `<script>` tag for an entry point.
 	 * @param string $entry e.g. `src/index.js`.
 	 */
-	public function js(string $entry)
+	public function js(string $entry): string
 	{
 		if (is_array($this->manifest)) {
 			$url = $this->prodUrl($this->manifest[$entry]['file']);
@@ -67,7 +72,7 @@ class Vite
 	}
 
 	/**
-	 * Output `<link>` tags for each CSS file of an entry point.
+	 * Outputs `<link>` tags for each CSS file of an entry point.
 	 * @param string $entry The JavaScript entry point that includes your CSS.
 	 */
 	public function css(string $entry)

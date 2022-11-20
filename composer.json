@@ -2,20 +2,31 @@
 	"name": "oblik/kirby-vite",
 	"description": "Kirby plugin that handles development and production mode of Vite.",
 	"type": "kirby-plugin",
-	"license": "MIT",
 	"version": "1.0.1",
+	"keywords": [
+		"kirby",
+		"vite"
+	],
+	"license": "MIT",
+	"homepage": "https://github.com/OblikStudio/kirby-vite#readme",
 	"authors": [
 		{
 			"name": "Oblik Studio",
 			"email": "hello@oblik.studio",
-			"homepage": "https://oblik.studio/"
+			"homepage": "https://oblik.studio"
 		}
 	],
 	"require": {
-		"getkirby/cms": "^3.5",
+		"getkirby/cms": "^3.7",
 		"getkirby/composer-installer": "^1.2"
 	},
 	"extra": {
-		"installer-name": "vite"
+		"installer-name": "vite",
+		"kirby-cms-path": false
+	},
+	"config": {
+		"allow-plugins": {
+			"getkirby/composer-installer": true
+		}
 	}
 }
